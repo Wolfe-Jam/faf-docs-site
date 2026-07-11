@@ -4,7 +4,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: 'FAF',
   titleTemplate: ':title · docs.faf.one',
-  description: 'The FAF manual. Facts, not marketing.',
+  description: 'The FAF manual. Facts for devs.',
   cleanUrls: true,
   lastUpdated: true,
   themeConfig: {

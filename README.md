@@ -1,6 +1,6 @@
 # faf-docs-site
 
-Source for **docs.faf.one** — the FAF manual. Facts, not marketing.
+Source for **docs.faf.one** — the FAF manual. Facts for devs.
 
 Built with [VitePress](https://vitepress.dev), served on Cloudflare Pages.
 

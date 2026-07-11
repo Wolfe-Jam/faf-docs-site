@@ -1,6 +1,6 @@
 # docs.faf.one
 
-The FAF manual. Facts, not marketing.
+The FAF manual. Facts for devs.
 
 New here? → [Getting started](/getting-started)
 
