@@ -1,6 +1,6 @@
 # Getting started
 
-faf-cli reads your repo and writes the context file your AI coding agent needs — detected from your real stack, not guessed.
+faf-cli reads your repo and writes the context file your AI coding agent needs — detected from your real stack, never guessed.
 
 Three steps.
 
