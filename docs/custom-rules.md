@@ -1,8 +1,6 @@
 # Custom rules
 
-The AI made a mistake. You don't want it again. Write one line.
-
-A custom rule is a correction you pin so the AI can't drift back to it. faf keeps your rules; a full regen never touches them.
+Custom rules are your own instructions to the AI — what it must always do, or never do, in this repo. Write them once in `project.faf`; faf carries them into every `AGENTS.md` it authors, and never overwrites them.
 
 ## Where they go
 
