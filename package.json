@@ -1,0 +1,14 @@
+{
+  "name": "faf-docs-site",
+  "private": true,
+  "type": "module",
+  "description": "Source for docs.faf.one — the FAF manual",
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "devDependencies": {
+    "vitepress": "^1.6.0"
+  }
+}
