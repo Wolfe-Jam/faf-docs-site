@@ -26,7 +26,7 @@ Detects your stack, writes `project.faf`, scores it 0–100%.
 faf export --agents
 ```
 
-Writes `AGENTS.md` from your `project.faf` — the file your agent reads. Also: `--claude`, `--gemini`, `--cursor`.
+Writes `AGENTS.md` from your `project.faf` — or prefaces an existing one with the facts, non-destructive to your content. Also: `--claude`, `--gemini`, `--cursor`.
 
 ---
 
