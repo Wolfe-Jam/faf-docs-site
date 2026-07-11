@@ -31,6 +31,14 @@ ai_instructions:
 - **Versioned in Git.** They live in `project.faf` — reviewed in PRs, travelling with the repo.
 - **Projected every run.** Change your stack, the facts update; your rules stay put.
 
+`project.faf` is a committed file in your repo — right alongside the ones you already keep:
+
+```
+package.json  ← npm reads this
+project.faf   ← AI reads this
+README.md     ← humans read this
+```
+
 Already have rules written straight into `AGENTS.md` or `CLAUDE.md`? faf's writers are non-destructive — they update a faf-managed block and leave everything else you wrote alone.
 
 ## Rules vs conventions
