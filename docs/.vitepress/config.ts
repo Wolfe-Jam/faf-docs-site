@@ -18,6 +18,7 @@ export default defineConfig({
         items: [
           { text: 'Getting started', link: '/getting-started' },
           { text: 'Custom rules', link: '/custom-rules' },
+          { text: 'Context guard', link: '/hooks' },
         ],
       },
     ],
