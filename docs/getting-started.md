@@ -10,7 +10,7 @@ Three steps.
 bunx faf
 ```
 
-No install needed. Or keep it: `npm i -g faf-cli` · `brew install wolfe-jam/faf/faf-cli`
+No install needed. Or keep it: `npm i -g faf-cli`
 
 ## B — Run it
 

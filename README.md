@@ -32,6 +32,7 @@ docs/
 ├─ index.md              front door + ToC
 ├─ getting-started.md    install · run · use
 ├─ custom-rules.md       pin corrections into AGENTS.md
+├─ hooks.md              pre-commit context-regression guard
 └─ .vitepress/
    ├─ config.ts          sidebar · search · nav
    └─ theme/             black/white lean overrides

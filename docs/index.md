@@ -12,6 +12,7 @@ The command-line tool. Reads your repo, writes the context your AI reads.
 
 - [Getting started](/getting-started) — install, first run, done
 - [Custom rules](/custom-rules) — pin instructions your AI must follow
+- [Context guard](/hooks) — a pre-commit hook that catches context regressions
 - Commands — every command, one line each *(soon)*
 - Scoring — the 0–100% AI-readiness score *(soon)*
 - Sync — keep `.faf` and `CLAUDE.md` in step *(soon)*
