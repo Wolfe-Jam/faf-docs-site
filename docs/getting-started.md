@@ -2,7 +2,17 @@
 
 faf-cli reads your repo and writes the context file your AI coding agent needs — detected from your real stack, never guessed.
 
-Three steps.
+## Try it on any repo first
+
+```
+faf git facebook/react
+```
+
+Clones shallow, reads the tree — languages, frameworks, `docker-compose` services, `Makefile` targets — and writes a scored `project.faf`. No install of the repo, no config. Point it at anything on GitHub.
+
+---
+
+For your own project, three steps.
 
 ## A — Install it
 
@@ -26,7 +36,7 @@ Detects your stack, writes `project.faf`, scores it 0–100%.
 faf export --agents
 ```
 
-Writes `AGENTS.md` from your `project.faf` — or prefaces an existing one with the facts, non-destructive to your content. Also: `--claude`, `--gemini`, `--cursor`.
+Writes `AGENTS.md` from your `project.faf` — or prefaces an existing one with the facts, non-destructive to your content. Also: `--gemini`, `--cursor`, `--copilot`, `--all`. See [Export](/export) for every target.
 
 ---
 
