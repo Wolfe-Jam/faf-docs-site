@@ -17,6 +17,8 @@ export default defineConfig({
         text: 'faf-cli',
         items: [
           { text: 'Getting started', link: '/getting-started' },
+          { text: 'Export', link: '/export' },
+          { text: 'Drift', link: '/drift' },
           { text: 'Custom rules', link: '/custom-rules' },
           { text: 'Context guard', link: '/hooks' },
         ],
