@@ -52,6 +52,25 @@ Every faf-authored file opens with its own fingerprint, so a re-run can tell its
 
 That fingerprint is also the safety check: a markerless file that starts with it is faf's own legacy output and gets upgraded in place; a markerless file that doesn't is yours, and only ever gets prefixed.
 
+## As a library
+
+Everything `faf export` does is importable — the same renderers, the same injector, the same repo enrichment. An MCP server or an editor extension writes the same bytes the CLI writes, instead of carrying a copy that drifts.
+
+```ts
+import { readFaf, enrichFromRepo, writeAgentsMd } from 'faf-cli';
+
+const data = readFaf(`${dir}/project.faf`);
+writeAgentsMd(dir, enrichFromRepo(dir, data));   // exactly `faf export --agents`
+```
+
+| Export | Does |
+|---|---|
+| `renderAgentsMd` · `renderGeminiMd` · `renderCursorrules` · `renderClaudeMd` · `renderCopilotInstructions` | render one target from `.faf` data — returns the string |
+| `writeAgentsMd` · `writeGeminiMd` · `writeCursorrules` · `writeClaudeMd` · `writeCopilotInstructions` | render + inject into the file in `dir` |
+| `enrichFromRepo(dir, data)` | the repo-facts step `--agents` and `--gemini` run first: commands, key files, secrets location. Hand-authored values win. |
+| `injectFafBlock(path, block, start?, end?)` · `findFafBlock(text)` | the managed-block injector — whole-line markers at column 0, fenced examples ignored, a truncated block is prefixed rather than overwritten |
+| `updateExistingFaf(dir, existing)` · `assembleFreshFaf(dir)` · `writeFaf(path, data)` | what `faf auto` does — update an existing `project.faf` or build a fresh one, and write it the way the CLI does |
+
 ---
 
 **Next:** [Custom rules](/custom-rules) — pin your own instructions so exports carry them forward
