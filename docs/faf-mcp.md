@@ -31,7 +31,7 @@ Fifteen shown by default; `FAF_TOOLS=all` exposes all twenty-nine. Every tool st
 | `faf_go` | guided interview to Trophy — asks only what the repo can't answer |
 | `faf_agents` · `faf_cursor` · `faf_gemini` | import / export / sync `AGENTS.md`, `.cursorrules`, `GEMINI.md` |
 | `faf_claude` | write `CLAUDE.md` (+ the three above with flags or `all`) from `project.faf` |
-| `faf_sync` | reconcile `project.faf` with package.json / git — dry-run, `apply:true` writes |
+| `faf_sync` | reconcile `project.faf` with package.json — dry-run lists each change, `apply:true` writes |
 | `faf_trust` · `faf_doctor` · `faf_check` | validate, diagnose, quality-check the file |
 | `faf_context` · `faf_read` · `faf_write` | read the context, read or write files |
 | `faf_git` | author `project.faf` from a GitHub URL |
