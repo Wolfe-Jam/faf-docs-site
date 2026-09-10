@@ -1,6 +1,6 @@
-# faf-mcp
+# .FAF Context
 
-The MCP server for Cursor, VS Code, Windsurf, Cline and every MCP-compatible IDE. It runs locally over stdio and gives the agent persistent project context from `project.faf` — and writes the files each tool reads (`AGENTS.md`, `.cursorrules`, `GEMINI.md`, `CLAUDE.md`) from that one source.
+**.FAF Context** is the name on the MCP registries; `faf-mcp` is the package and the repo. The MCP server for Cursor, VS Code, Windsurf, Cline and every MCP-compatible IDE. It runs locally over stdio and gives the agent persistent project context from `project.faf` — and writes the files each tool reads (`AGENTS.md`, `.cursorrules`, `GEMINI.md`, `CLAUDE.md`) from that one source.
 
 ## Run it
 

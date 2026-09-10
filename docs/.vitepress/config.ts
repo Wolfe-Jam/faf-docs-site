@@ -26,7 +26,7 @@ export default defineConfig({
       {
         text: 'faf-mcp',
         items: [
-          { text: 'IDE server', link: '/faf-mcp' },
+          { text: '.FAF Context (faf-mcp)', link: '/faf-mcp' },
         ],
       },
     ],
