@@ -23,6 +23,12 @@ export default defineConfig({
           { text: 'Context guard', link: '/hooks' },
         ],
       },
+      {
+        text: 'faf-mcp',
+        items: [
+          { text: 'IDE server', link: '/faf-mcp' },
+        ],
+      },
     ],
     search: { provider: 'local' },
     socialLinks: [
