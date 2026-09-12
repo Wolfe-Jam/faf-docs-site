@@ -11,6 +11,7 @@ New here? → [Getting started](/getting-started)
 The command-line tool. Reads your repo, writes the context your AI reads.
 
 - [Getting started](/getting-started) — install, first run, done
+- [Export](/export) — every file `faf` can write, and why re-running is always safe
 - [Custom rules](/custom-rules) — pin instructions your AI must follow
 - [Context guard](/hooks) — a pre-commit hook that catches context regressions
 - Commands — every command, one line each *(soon)*
