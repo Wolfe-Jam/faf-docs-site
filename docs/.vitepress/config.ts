@@ -18,6 +18,7 @@ export default defineConfig({
         items: [
           { text: 'Getting started', link: '/getting-started' },
           { text: 'Export', link: '/export' },
+          { text: 'Cards', link: '/cards' },
           { text: 'Drift', link: '/drift' },
           { text: 'Custom rules', link: '/custom-rules' },
           { text: 'Context guard', link: '/hooks' },
