@@ -19,6 +19,7 @@ export default defineConfig({
           { text: 'Getting started', link: '/getting-started' },
           { text: 'Export', link: '/export' },
           { text: 'Cards', link: '/cards' },
+          { text: 'Compile', link: '/fafb' },
           { text: 'Drift', link: '/drift' },
           { text: 'Custom rules', link: '/custom-rules' },
           { text: 'Context guard', link: '/hooks' },
