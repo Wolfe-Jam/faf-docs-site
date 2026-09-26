@@ -17,6 +17,7 @@ export default defineConfig({
         text: 'faf-cli',
         items: [
           { text: 'Getting started', link: '/getting-started' },
+          { text: 'Scoring', link: '/scoring' },
           { text: 'Export', link: '/export' },
           { text: 'Cards', link: '/cards' },
           { text: 'Compile', link: '/fafb' },
