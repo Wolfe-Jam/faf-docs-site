@@ -32,6 +32,12 @@ export default defineConfig({
           { text: '.FAF Context (faf-mcp)', link: '/faf-mcp' },
         ],
       },
+      {
+        text: 'grok-faf-mcp',
+        items: [
+          { text: 'Grok FAF (grok-faf-mcp)', link: '/grok-faf-mcp' },
+        ],
+      },
     ],
     search: { provider: 'local' },
     socialLinks: [
