@@ -20,7 +20,7 @@ For your own project, three steps.
 bunx faf
 ```
 
-No install needed. Or keep it: `npm i -g faf-cli`
+No install needed: `npx faf` and `pnpm dlx faf` work the same way. Or keep it: `npm i -g faf-cli`
 
 ## B — Run it
 
