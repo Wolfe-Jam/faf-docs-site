@@ -14,6 +14,7 @@ The command-line tool. Reads your repo, writes the context your AI reads.
 - [Export](/export) — every file `faf` can write, and why re-running is always safe
 - [Custom rules](/custom-rules) — pin instructions your AI must follow
 - [Context guard](/hooks) — a pre-commit hook that catches context regressions
+- [What each command writes](/side-effects) — project files, agent files, git and CI, and what leaves your machine
 - Commands — every command, one line each *(soon)*
 - [Scoring](/scoring) — the 0–100% AI-readiness score: always-33, and what counts
 - Sync — keep `.faf` and `CLAUDE.md` in step *(soon)*
