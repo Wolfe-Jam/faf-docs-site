@@ -24,6 +24,7 @@ export default defineConfig({
           { text: 'Drift', link: '/drift' },
           { text: 'Custom rules', link: '/custom-rules' },
           { text: 'Context guard', link: '/hooks' },
+          { text: 'What each command writes', link: '/side-effects' },
         ],
       },
       {
