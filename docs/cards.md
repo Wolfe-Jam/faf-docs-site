@@ -13,6 +13,40 @@ Agents and MCP servers are found through cards — small files other machines re
 
 `faf cards` reads both and projects every card from them. No `.fafa`, no agent cards: faf will not invent an agent.
 
+### A starting `agent.fafa`
+
+Seven answers describe an agent or a server. Copy this into your project and change the values; the comments mark each answer.
+
+```yaml
+version: "1.0"
+agent:
+  name: weather-agent                 # short name
+  displayName: Weather Agent          # name
+  id: urn:air:example.com:agent:weather-agent   # domain + short name
+  version: 1.2.0                      # version
+  description: Answers questions about the weather anywhere.   # what it does
+  homepage: https://example.com
+capabilities:                         # what it can do
+  - name: Get forecast
+    type: tool
+    description: A three-day forecast for a place.
+endpoints:                            # where it runs
+  - protocol: a2a
+    transport: http
+    location: https://example.com/a2a
+metadata:
+  cards:
+    examples:                         # 2-5 questions people ask it; search finds it by these
+      - Will it rain in Leeds tomorrow?
+      - What is the forecast for Tokyo this weekend?
+```
+
+The catalog and ARD need only this file:
+
+```bash
+faf cards --target catalog,ard     # writes .well-known/ai-catalog.json and .well-known/ard.json
+```
+
 ## Write them
 
 ```bash
