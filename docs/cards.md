@@ -41,7 +41,7 @@ metadata:
       - What is the forecast for Tokyo this weekend?
 ```
 
-The catalog and ARD need only this file:
+Keep it beside your `project.faf` (no `project.faf` yet? `faf init` makes one). Then:
 
 ```bash
 faf cards --target catalog,ard     # writes .well-known/ai-catalog.json and .well-known/ard.json
