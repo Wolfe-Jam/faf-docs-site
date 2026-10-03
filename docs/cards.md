@@ -4,16 +4,37 @@ Agents and MCP servers are found through cards — small files other machines re
 
 `faf cards` writes them all from one file.
 
+## Start here
+
+```bash
+npx faf-cli@latest card init
+```
+
+It asks seven questions (name, short name, domain, what it does, version, where it runs, what it can do) and a few questions people ask your agent, writes `agent.fafa`, then offers to write your AI Catalog and ARD entries. Press Enter and you are listed.
+
+For scripts and CI, every answer is a flag and nothing is asked:
+
+```bash
+faf card init --name "Weather Agent" --domain example.com \
+  --description "Answers questions about the weather anywhere." \
+  --set-version 1.2.0 --url https://example.com/a2a \
+  --skill "Get forecast: A three-day forecast for a place." \
+  --example "Will it rain in Leeds tomorrow?"
+```
+
+`--package <npm name>` instead of `--url` for an MCP server people install. `card init` never replaces an existing `agent.fafa` unless you pass `--force`.
+
 ## What it needs
 
-| File | Holds |
+| You have | You get |
 |---|---|
-| `project.faf` | your project's context |
-| `agent.fafa` | your agent's identity — name, domain, what it does, where it runs |
+| `agent.fafa` | AI Catalog + ARD |
+| + `project.faf` | + A2A, MCP and registry cards |
+| `project.faf` filled out | the full context behind every card |
 
-`faf cards` reads both and projects every card from them. No `.fafa`, no agent cards: faf will not invent an agent.
+`agent.fafa` is your agent's identity: name, domain, what it does, where it runs. `project.faf` is your project's context (`faf init` makes one). No `.fafa`, no agent cards: faf will not invent an agent.
 
-### A starting `agent.fafa`
+### Or write `agent.fafa` by hand
 
 Seven answers describe an agent or a server. Copy this into your project and change the values; the comments mark each answer.
 
@@ -41,7 +62,7 @@ metadata:
       - What is the forecast for Tokyo this weekend?
 ```
 
-Keep it beside your `project.faf` (no `project.faf` yet? `faf init` makes one). Then:
+Then:
 
 ```bash
 faf cards --target catalog,ard     # writes .well-known/ai-catalog.json and .well-known/ard.json
