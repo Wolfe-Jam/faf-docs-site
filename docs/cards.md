@@ -10,7 +10,7 @@ Agents and MCP servers are found through cards — small files other machines re
 npx faf-cli@latest card init
 ```
 
-It asks seven questions (name, short name, domain, what it does, version, where it runs, what it can do) and a few questions people ask your agent, writes `agent.fafa`, then offers to write your AI Catalog and ARD entries. Press Enter and you are listed.
+It asks seven questions (name, short name, domain, what it does, version, where it runs, what it can do) and a few questions people ask your agent, writes `agent.fafa`, then offers to write the cards it gives: your A2A card or MCP Server Card, and your AI Catalog and ARD entries. Press Enter and you are listed.
 
 For scripts and CI, every answer is a flag and nothing is asked:
 
@@ -22,17 +22,18 @@ faf card init --name "Weather Agent" --domain example.com \
   --example "Will it rain in Leeds tomorrow?"
 ```
 
-`--package <npm name>` instead of `--url` for an MCP server people install. `card init` never replaces an existing `agent.fafa` unless you pass `--force`.
+`--url <url> --protocol mcp` for a remote MCP server; `--package <npm name>` instead of `--url` for an MCP server people install. A "where it runs" that is not an http(s) URL or an npm package name is refused. `card init` never replaces an existing `agent.fafa` unless you pass `--force`.
 
-## What it needs
+## BETTER and BEST
 
-| You have | You get |
-|---|---|
-| `agent.fafa` | AI Catalog + ARD |
-| + `project.faf` | + A2A, MCP and registry cards |
-| `project.faf` filled out | the full context behind every card |
+| | You have | You get |
+|---|---|---|
+| **BETTER** | `agent.fafa` | the cards its endpoints allow: A2A card (an A2A URL), MCP Server Card (an MCP URL), registry `server.json` (an MCP URL or a package), AI Catalog, ARD |
+| **BEST** | + `project.faf` | the same cards, with FAF context: the A2A card's context extension, the Server Card's and `server.json`'s `_meta` |
 
-`agent.fafa` is your agent's identity: name, domain, what it does, where it runs. `project.faf` is your project's context (`faf init` makes one). No `.fafa`, no agent cards: faf will not invent an agent.
+BETTER is the `.fafa`, BEST is `project.faf`. `agent.fafa` is your agent's identity: name, domain, what it does, where it runs. It sits behind your cards, the way `package.json` sits behind a build: other machines read the A2A card and the catalog, in formats they already know. `project.faf` is your project's context (`faf init` makes one). Add it and every card carries that context; the cards' names and descriptions still come from `agent.fafa`, so moving up to BEST never changes who your agent is.
+
+No `.fafa`, no agent cards: faf will not invent an agent.
 
 ### Or write `agent.fafa` by hand
 
@@ -65,7 +66,7 @@ metadata:
 Then:
 
 ```bash
-faf cards --target catalog,ard     # writes .well-known/ai-catalog.json and .well-known/ard.json
+faf cards                          # writes the cards your agent.fafa gives
 ```
 
 ## Write them
@@ -78,15 +79,17 @@ faf cards --check                  # print them, write nothing
 
 ## Every target
 
-| Target | Writes | What reads it |
-|---|---|---|
-| `a2a` | `.well-known/agent-card.json` | other agents, over A2A |
-| `mcp` | `server-card` | MCP clients connecting to a remote server |
-| `registry` | patches `server.json` | the MCP Registry |
-| `catalog` | `.well-known/ai-catalog.json` | AI Catalog consumers |
-| `ard` | `.well-known/ard.json` | agent search engines |
+| Target | Writes | From | What reads it |
+|---|---|---|---|
+| `a2a` | `.well-known/agent-card.json` | an A2A endpoint in `agent.fafa` | other agents, over A2A |
+| `mcp` | `server-card` | a remote MCP URL in `agent.fafa` | MCP clients connecting to a remote server |
+| `registry` | patches `server.json` | an MCP URL or package in `agent.fafa` | the MCP Registry |
+| `catalog` | `.well-known/ai-catalog.json` | `agent.fafa` | AI Catalog consumers |
+| `ard` | `.well-known/ard.json` | `agent.fafa` | agent search engines |
 
-`registry` patches an existing `server.json` — it will not seed one.
+With `project.faf`, each card also carries FAF context. An MCP server's own repo with `project.faf` and no MCP endpoint in its `.fafa` gets its Server Card and registry identity from `project.faf`, as `faf server-card` writes them.
+
+`registry` patches an existing `server.json` — it will not seed one. A card you wrote yourself, or edited since faf wrote it, is left unchanged (`--force` replaces it).
 
 ## Identifiers are derived, not invented
 
@@ -144,8 +147,8 @@ import { buildPack } from 'faf-cli/pack';
 const pack = buildPack(answers, { cards: ['a2a', 'server_card', 'ai_catalog'] });
 ```
 
-`answersToFafa` turns a handful of answers into a `.fafa`; `buildPack` projects it onto the cards you ask for. No filesystem, no Node built-ins, types included.
+`answersToFafa` turns a handful of answers into a `.fafa`; `buildPack` projects it onto the cards you ask for. Pass `faf` (your parsed `project.faf`) for BEST. No filesystem, no Node built-ins, types included. It writes the same cards as `faf cards`.
 
-## Neutral by default
+## What you publish
 
-A card built through the pack carries no extension and no FAF media type unless you pass one. Your `.fafa` is listed in your own catalog only when you ask for it. What you publish describes your agent, not the format underneath it.
+At BETTER a card carries no FAF context and nothing that points at a `project.faf`: what you publish describes your agent, in the card formats your readers already use. Your catalog lists your `.fafa`, the source the cards come from (`listFafa: false` leaves it out). At BEST each card adds FAF's context, pointing at your `project.faf`.

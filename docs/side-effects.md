@@ -2,7 +2,7 @@
 
 Every faf command, and what it touches: files in your project, files your AI agents load, git and CI, and anything that leaves your machine. Use it to decide what an agent may run on its own, to write sandbox or allowlist rules, or just to know before you run.
 
-Checked against **faf-cli v8.0.1** by running each command in a clean repo and diffing every file, `.git/hooks` and the local git config before and after. `card init` and `cards` re-checked the same way on **v8.1.0**.
+Checked against **faf-cli v8.0.1** by running each command in a clean repo and diffing every file, `.git/hooks` and the local git config before and after. `card init` and `cards` re-checked the same way on **v8.2.0**.
 
 ## Writes nothing
 
@@ -36,8 +36,8 @@ faf git <url> --stdout       # clones to a temp dir, prints the .faf
 | `conductor import <path>` | merges into `project.faf` |
 | `memory etch`, `memory convert` | `soul.fafm` (or `-f` / `-o`) |
 | `git <url>` | `./project.faf`, after a shallow clone to a temp dir |
-| `card init` | `agent.fafa`; at a terminal it then offers to write `.well-known/ai-catalog.json` and `.well-known/ard.json` |
-| `cards` | your card files: `.well-known/ai-catalog.json`, `.well-known/ard.json`, and with a `project.faf` also `.well-known/agent-card.json`, `server-card`, `server.json` |
+| `card init` | `agent.fafa`; at a terminal it then offers to write the cards it gives: `.well-known/agent-card.json` (an A2A URL) or `server-card` (an MCP URL), plus `.well-known/ai-catalog.json` and `.well-known/ard.json` |
+| `cards` | your card files, as your `agent.fafa` allows: `.well-known/ai-catalog.json`, `.well-known/ard.json`, `.well-known/agent-card.json` (an A2A URL), `server-card` (an MCP URL), and it patches an existing `server.json`; with a `project.faf` the same files carry FAF context |
 | `server-card` | patches your existing `server.json` |
 | `show` | `project.html`, then opens it in a browser |
 | `taf --output <path>` | a score snapshot |
