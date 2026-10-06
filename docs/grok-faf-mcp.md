@@ -54,7 +54,7 @@ The hosted URL serves its own set — scoring, validation, `refresh_faf`, a cont
 
 ## Passport
 
-Grok FAF has its own FAF passport, `agent.fafa`, at `https://grok.faf.one/.well-known/fafa`, with AI Catalog and ARD entries at `/.well-known/ai-catalog.json` and `/.well-known/ard.json` that point to it. The MCP Server Card is the hosted one: `https://grok.faf.one/.well-known/mcp/server-card.json` redirects to it. See [Cards](/cards).
+Grok FAF has its own FAF passport, `agent.fafa`, at `https://grok.faf.one/.well-known/fafa`, with AI Catalog and ARD entries at `/.well-known/ai-catalog.json` and `/.well-known/ard.json` that point to it. The MCP Server Card is the hosted one, at `https://mcpaas.live/grok/mcp/v1/server-card` (the `<streamable-http-url>/server-card` path from SEP-2127). `https://grok.faf.one/mcp/server-card` and the older `https://grok.faf.one/.well-known/mcp/server-card.json` both redirect to it. See [Cards](/cards).
 
 ## ZEPH
 
