@@ -89,7 +89,7 @@ faf cards --check                  # print them, write nothing
 
 With `project.faf`, each card also carries FAF context. An MCP server's own repo with `project.faf` and no MCP endpoint in its `.fafa` gets its Server Card and registry identity from `project.faf`, as `faf server-card` writes them.
 
-`registry` patches an existing `server.json` — it will not seed one. A card you wrote yourself, or edited since faf wrote it, is left unchanged (`--force` replaces it).
+`registry` patches an existing `server.json` — it will not seed one. A card you wrote yourself, or edited since faf wrote it, is left unchanged (`--force` replaces it). An existing `server.json` keeps the name it was published under: when the `.fafa` gives a different name, faf leaves the name as it is and says so, because a rename moves the next registry publish to another namespace. `--force` renames it.
 
 ## Identifiers are derived, not invented
 
