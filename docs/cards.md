@@ -22,7 +22,7 @@ faf card init --name "Weather Agent" --domain example.com \
   --example "Will it rain in Leeds tomorrow?"
 ```
 
-`--url <url> --protocol mcp` for a remote MCP server; `--package <npm name>` instead of `--url` for an MCP server people install. A "where it runs" that is not an http(s) URL or an npm package name is refused. `card init` never replaces an existing `agent.fafa` unless you pass `--force`.
+`--url <url> --protocol mcp` for a remote MCP server; `--package <npm name>` instead of `--url` for an MCP server people install. A "where it runs" that is not a whole http(s) URL (with a host, no spaces) or an npm package name is refused. `card init` never replaces an existing `agent.fafa` unless you pass `--force`.
 
 ## BETTER and BEST
 
@@ -132,7 +132,7 @@ An entry with no representative queries is valid and unfindable — the semantic
 The catalog and the ARD manifest may list other publishers' rows. faf edits them as text, and touches only its own:
 
 - A row is faf's when its identifier is **exactly** faf's — never by type or URL.
-- On a match, only `url`, `type` and `updatedAt` move. Your copy — titles, tags — stays.
+- On a match, only `url` and `type` move, and `updatedAt` moves only when one of them changed. A run that changes nothing writes nothing. Your copy — titles, tags — stays.
 - Any other faf row is appended. Every other byte stays as it was.
 - `host` is the one key faf may add, and only when the catalog names none. A host already there is yours.
 - A catalog faf cannot edit row by row is refused, unchanged, in one line.
