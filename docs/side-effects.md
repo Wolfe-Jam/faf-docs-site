@@ -29,7 +29,7 @@ faf git <url> --stdout       # clones to a temp dir, prints the .faf
 | Command | Writes |
 |---|---|
 | `init` | `project.faf`, `.faf-dna` |
-| `auto`, `loop`, `go`, `edit`, `migrate`, `recover` | `project.faf` |
+| `auto`, `loop`, `go`, `edit`, `migrate` | `project.faf` |
 | `refresh` | re-scores; recompiles `project.fafb` if you have one |
 | `compile` | `project.fafb` |
 | `decompile <file> --output <path>` | the file you name |
