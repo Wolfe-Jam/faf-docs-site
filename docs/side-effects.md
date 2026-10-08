@@ -49,7 +49,7 @@ faf git <url> --stdout       # clones to a temp dir, prints the .faf
 |---|---|
 | `export` | `AGENTS.md`, `.cursorrules`, `GEMINI.md`, `.github/copilot-instructions.md`, `project.html` |
 | `export --agents` (or `--cursor`, `--gemini`, `--copilot`, `--llms`, `--html`, `--card`) | just that one |
-| `sync` | faf's block in `CLAUDE.md` (`--direction pull` writes `project.faf` instead) |
+| `sync` | faf's block in `CLAUDE.md`. One way: it never writes `project.faf` |
 | `export --grok` | adds the grok-faf-mcp server to `.grok/config.toml`, so Grok starts it next session. Opt-in only: never on a bare `export` or `--all`. |
 
 faf writes **only its own marked block** in an instructions file and keeps everything outside it. It won't replace a file it can't prove it wrote unless you pass `--force`.
