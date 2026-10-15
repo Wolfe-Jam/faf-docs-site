@@ -22,7 +22,13 @@ faf card init --name "Weather Agent" --domain example.com \
   --example "Will it rain in Leeds tomorrow?"
 ```
 
-`--url <url> --protocol mcp` for a remote MCP server; `--package <npm name>` instead of `--url` for an MCP server people install. A "where it runs" that is not a whole http(s) URL (with a host, no spaces) or an npm package name is refused. `card init` never replaces an existing `agent.fafa` unless you pass `--force`.
+`--url <url> --protocol mcp` for a remote MCP server. For something people install, use `--package` instead of `--url`, and say what it is with `--kind`: `mcp` (an MCP server, the default), `cli` or `library`. A bare package name is npm; `pypi:<name>` and `crates:<name>` name the other registries.
+
+```bash
+faf card init --package pypi:my-lib --kind library   # plus the other answers
+```
+
+`--homepage <url>` sets the homepage (default `https://<domain>`). A "where it runs" that is not a whole http(s) URL (with a host, no spaces) or a valid package name is refused. `card init` never replaces an existing `agent.fafa` unless you pass `--force`.
 
 ## BETTER and BEST
 
@@ -33,7 +39,7 @@ faf card init --name "Weather Agent" --domain example.com \
 
 BETTER is the `.fafa`, BEST is `project.faf`. `agent.fafa` is your agent's identity: name, domain, what it does, where it runs. It sits behind your cards, the way `package.json` sits behind a build: other machines read the A2A card and the catalog, in formats they already know. `project.faf` is your project's context (`faf init` makes one). Add it and every card carries that context; the cards' names and descriptions still come from `agent.fafa`, so moving up to BEST never changes who your agent is.
 
-No `.fafa`, no agent cards: faf will not invent an agent.
+No `.fafa`, no agent cards: faf will not invent an agent. Only an MCP server gets MCP cards: a CLI or a library gets its AI Catalog and ARD entries, and `faf cards` says in one line why the MCP cards were skipped.
 
 ### Or write `agent.fafa` by hand
 
