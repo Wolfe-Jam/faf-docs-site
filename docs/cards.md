@@ -93,7 +93,7 @@ faf cards --check                  # print them, write nothing
 | `catalog` | `.well-known/ai-catalog.json` | `agent.fafa` | AI Catalog consumers |
 | `ard` | `.well-known/ard.json` | `agent.fafa` | agent search engines |
 
-With `project.faf`, each card also carries FAF context. An MCP server's own repo with `project.faf` and no MCP endpoint in its `.fafa` gets its Server Card and registry identity from `project.faf`, as `faf server-card` writes them.
+With `project.faf`, each card also carries FAF context. An MCP server's own repo with `project.faf` and no MCP endpoint in its `.fafa` gets its Server Card and registry identity from `project.faf`, as `faf server-card` writes them. With `project.faf` and no `agent.fafa`, only a project typed `mcp` gets those two cards; for any other type, `faf cards` says why it skipped them, and `--target mcp` writes them anyway.
 
 `registry` patches an existing `server.json` — it will not seed one. A card you wrote yourself, or edited since faf wrote it, is left unchanged (`--force` replaces it). An existing `server.json` keeps the name it was published under: when the `.fafa` gives a different name, faf leaves the name as it is and says so, because a rename moves the next registry publish to another namespace. `--force` renames it.
 
