@@ -34,6 +34,12 @@ export default defineConfig({
         ],
       },
       {
+        text: 'Chrome extension',
+        items: [
+          { text: 'Agent Discovery Check', link: '/agent-discovery-check' },
+        ],
+      },
+      {
         text: 'grok-faf-mcp',
         items: [
           { text: 'Grok FAF (grok-faf-mcp)', link: '/grok-faf-mcp' },

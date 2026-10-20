@@ -19,6 +19,10 @@ The command-line tool. Reads your repo, writes the context your AI reads.
 - [Scoring](/scoring) — the 0–100% AI-readiness score: always-33, and what counts
 - Sync — keep `.faf` and `CLAUDE.md` in step *(soon)*
 
+## Chrome extension
+
+- [Agent Discovery Check](/agent-discovery-check) — checks the site you are on for an AI Catalog, MCP Server Card, llms.txt and WebMCP tools
+
 ## Concepts *(soon)*
 
 - What is a `.faf` — the file, and why
