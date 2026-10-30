@@ -28,8 +28,9 @@ faf git <url> --stdout       # clones to a temp dir, prints the .faf
 
 | Command | Writes |
 |---|---|
-| `init` | `project.faf`, `.faf-dna` |
+| `init` | `project.faf`, `.faf-dna` (when there is none; `--new` keeps it) |
 | `auto`, `loop`, `go`, `edit`, `migrate` | `project.faf` |
+| `auto`, `go`, `edit`, `refresh` | a new version in `.faf-dna` when the score moves; `refresh` writes the birth certificate if there is none ([DNA](/dna)) |
 | `refresh` | re-scores; recompiles `project.fafb` if you have one |
 | `compile` | `project.fafb` |
 | `decompile <file> --output <path>` | the file you name |
