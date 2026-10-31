@@ -22,6 +22,7 @@ export default defineConfig({
           { text: 'Cards', link: '/cards' },
           { text: 'Compile', link: '/fafb' },
           { text: 'Drift', link: '/drift' },
+          { text: 'DNA', link: '/dna' },
           { text: 'Custom rules', link: '/custom-rules' },
           { text: 'Context guard', link: '/hooks' },
           { text: 'What each command writes', link: '/side-effects' },
