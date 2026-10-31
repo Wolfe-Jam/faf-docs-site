@@ -11,7 +11,7 @@ score  check  dna  context  drift  log  diff  convert  search
 info  formats  demo  wjttc  share
 ```
 
-Also read-only: plain `ai`, `hooks`, `taf` and `taf setup` (they print), `bench questions`, `memory ls` / `recall` / `show`, `conductor export` (prints JSON), and `decompile <file>` without `--output`.
+Also read-only: plain `ai`, `hooks`, `taf` and `taf setup` (they print), `taf receipts` (reads git, never fetches), `bench questions`, `memory ls` / `recall` / `show`, `conductor export` (prints JSON), and `decompile <file>` without `--output`.
 
 **`share` sends nothing.** It packs `project.faf` into a `faf.one/share` link on your machine and prints it; `--copy` puts the link on your clipboard.
 
