@@ -38,6 +38,10 @@ faf export --agents
 
 Writes `AGENTS.md` from your `project.faf` — or prefaces an existing one with the facts, non-destructive to your content. Also: `--gemini`, `--cursor`, `--copilot`, `--all`. See [Export](/export) for every target.
 
+## Plain output
+
+Colour shows only in a terminal. Piped output, CI logs and agent tools get plain text. `NO_COLOR` (any value) turns colour off; `FORCE_COLOR` turns it on, even when piped.
+
 ---
 
 That's it. Your AI now has context that versions with your code — no re-explaining, no drift.
