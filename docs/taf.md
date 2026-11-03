@@ -58,6 +58,8 @@ For Python, the recipe also installs your test tools: a `test`, `tests` or `dev`
 
 faf-taf-git reads Jest, Vitest, Bun and WJTTC output, and JUnit XML. A runner that writes JUnit XML works with the placeholder: run it, and point `test-output-file` at the report.
 
+Maven and Gradle write one XML file per test class. Join them into one file first (`cat target/surefire-reports/TEST-*.xml > report.xml` for Maven, `cat build/test-results/test/TEST-*.xml > report.xml` for Gradle), or the receipt covers a single class, and one class's file can read PASSED for a run that failed.
+
 A Go repo gets:
 
 ```yaml
