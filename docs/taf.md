@@ -46,9 +46,15 @@ faf picks the recipe from the repo:
 | Repo | Test step | Receipt reads |
 |---|---|---|
 | `package.json` whose `test` script runs Jest or Vitest, or `bun test` with a Bun lockfile | your `test` script, via npm, pnpm, yarn or bun (from the lockfile) | the test output |
+| `package.json` whose `test` script is `node --test` (directly or through another script) | your `test` script, with node's JUnit reporter added through `NODE_OPTIONS` | `report.xml` |
+| `package.json` whose `test` script is `mocha` | your `test` script, with mocha's built-in `xunit` reporter added | `report.xml` |
 | Python (`pyproject.toml`, `setup.py`, `setup.cfg`, `requirements.txt`, `pytest.ini`) | `pytest --junitxml=report.xml` | `report.xml` |
 | Go (`go.mod`) | `gotestsum --junitfile report.xml -- ./...` | `report.xml` |
 | Anything else, or another JS runner | a `TODO` placeholder to fill in | your choice |
+
+The node:test and mocha steps run your own `test` script, so `pretest` and `posttest` run as they do locally. A script that picks its own reporter, runs after another command (`tsc && mocha`), or hands over to mocha from another script gets the placeholder.
+
+For Python, the recipe also installs your test tools: a `test`, `tests` or `dev` extra in `[project.optional-dependencies]` (`pip install -e ".[test]"`), or a dependency group of that name in `[dependency-groups]` (`pip install --group test`). With `poetry.lock`, `uv.lock` or `pdm.lock`, a comment says to install dev dependencies with that tool.
 
 faf-taf-git reads Jest, Vitest, Bun and WJTTC output, and JUnit XML. A runner that writes JUnit XML works with the placeholder: run it, and point `test-output-file` at the report.
 
@@ -81,7 +87,7 @@ jobs:
           gotestsum --junitfile report.xml -- ./...
       - name: Print the receipt
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
-        uses: Wolfe-Jam/faf-taf-git@v2.4.3
+        uses: Wolfe-Jam/faf-taf-git@v2.4.5
         with:
           test-output-file: report.xml
           target-branch: taf-receipts
@@ -96,3 +102,4 @@ jobs:
 - **One branch is recorded,** your default: origin's HEAD; else origin's `main`, `master` or only branch; else the current branch, and faf says it's a guess. Check `branches:` before you commit. Pull requests run the tests and print no receipt.
 - **Runs that finish together keep their receipts.** A run whose push loses the race fetches the branch, adds its receipt on top, and pushes again, up to 5 tries. Nothing is force-pushed: the receipts branch only grows.
 - **A run that fails before its tests** (install, toolchain), or whose output can't be read, gets no receipt. The job is red.
+- **A run where every test was skipped** is recorded as `SKIPPED`, not `PASSED`.

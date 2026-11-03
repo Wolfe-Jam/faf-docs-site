@@ -40,7 +40,7 @@ Writes `AGENTS.md` from your `project.faf` — or prefaces an existing one with 
 
 ## Plain output
 
-Colour shows only in a terminal. Piped output, CI logs and agent tools get plain text. `NO_COLOR` (any value) turns colour off; `FORCE_COLOR` turns it on, even when piped.
+Colour shows only in a terminal. Piped output, CI logs and agent tools get plain text. `NO_COLOR` (any value) turns colour off; `FORCE_COLOR` turns it on, even when piped, and `FORCE_COLOR=0` or `false` turns it off, even in a terminal. Error messages are coloured only when they go to a terminal.
 
 ---
 
