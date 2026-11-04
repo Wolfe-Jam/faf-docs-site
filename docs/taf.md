@@ -50,6 +50,10 @@ faf picks the recipe from the repo:
 | `package.json` whose `test` script is `mocha` | your `test` script, with mocha's built-in `xunit` reporter added | `report.xml` |
 | Python (`pyproject.toml`, `setup.py`, `setup.cfg`, `requirements.txt`, `pytest.ini`) | `pytest --junitxml=report.xml` | `report.xml` |
 | Go (`go.mod`) | `gotestsum --junitfile report.xml -- ./...` | `report.xml` |
+| Rust (`Cargo.toml`) | `cargo nextest run --profile ci --workspace --no-fail-fast` | `target/nextest/ci/junit.xml` |
+| Maven (`pom.xml`) | `mvn -B --fail-at-end test` (`./mvnw` with the wrapper), then a join step | `report.xml` |
+| Gradle (`build.gradle`, `build.gradle.kts`, `settings.gradle*`) | `gradle test --continue` (`./gradlew` with the wrapper), then a join step | `report.xml` |
+| .NET (`*.sln`, `*.slnx`, `*.csproj`, `*.fsproj` at the top) | `dotnet test` with the JUnit logger, one file per test assembly, then a join step | `report.xml` |
 | Anything else, or another JS runner | a `TODO` placeholder to fill in | your choice |
 
 The node:test and mocha steps run your own `test` script, so `pretest` and `posttest` run as they do locally. A script that picks its own reporter, runs after another command (`tsc && mocha`), or hands over to mocha from another script gets the placeholder.
@@ -58,7 +62,13 @@ For Python, the recipe also installs your test tools: a `test`, `tests` or `dev`
 
 faf-taf-git reads Jest, Vitest, Bun and WJTTC output, and JUnit XML. A runner that writes JUnit XML works with the placeholder: run it, and point `test-output-file` at the report.
 
-Maven and Gradle write one XML file per test class. Join them into one file first (`cat target/surefire-reports/TEST-*.xml > report.xml` for Maven, `cat build/test-results/test/TEST-*.xml > report.xml` for Gradle), or the receipt covers a single class, and one class's file can read PASSED for a run that failed.
+When a repo has files for more than one language, faf picks in this order: `package.json`, Go, Rust, Maven, Gradle, .NET, Python. A Rust or Java repo with a `requirements.txt` gets the Rust or Java recipe.
+
+**Rust.** The recipe installs cargo-nextest and runs every test (`--no-fail-fast`), so the receipt counts the whole suite. nextest writes JUnit only for a profile that asks for it: the workflow writes `.config/nextest.toml` with `[profile.ci.junit]` when the repo has no nextest config. If yours has one without that table, the workflow gets a comment saying to add it (with `path = "junit.xml"`), since there is no report to read without it; your file is never edited. nextest leaves `#[ignore]` tests out of its JUnit file, so their skips are not on the receipt.
+
+**Maven and Gradle** write one XML file per test class, so the recipe adds a step that joins them into `report.xml` (`cat target/surefire-reports/TEST-*.xml > report.xml` for Maven, `cat build/test-results/test/TEST-*.xml > report.xml` for Gradle; a `find` across modules when `pom.xml` has `<modules>` or settings has `include`). One class's file alone can read PASSED for a run that failed. `--fail-at-end` and `--continue` keep a failing module from stopping the others. Java comes from `actions/setup-java` (Temurin 21); without `gradlew`, `gradle/actions/setup-gradle` installs Gradle.
+
+**.NET.** In CI only, the recipe adds the `JunitXml.TestLogger` package to each test project (one that references `Microsoft.NET.Test.Sdk` or sets `<IsTestProject>true`); your project files are not changed in the repo, and a project that already references the logger keeps its own version. `setup-dotnet` installs every SDK channel your projects' `<TargetFramework>` names (`net8.0` gets `8.0.x`), plus your `global.json` when there is one. With more than one solution or project at the top, `dotnet test` is given the solution.
 
 A Go repo gets:
 
@@ -89,7 +99,7 @@ jobs:
           gotestsum --junitfile report.xml -- ./...
       - name: Print the receipt
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
-        uses: Wolfe-Jam/faf-taf-git@v2.4.5
+        uses: Wolfe-Jam/faf-taf-git@v2.4.6
         with:
           test-output-file: report.xml
           target-branch: taf-receipts
