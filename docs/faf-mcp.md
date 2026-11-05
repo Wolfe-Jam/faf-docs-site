@@ -33,7 +33,7 @@ Fifteen shown by default; `FAF_TOOLS=all` exposes all twenty-nine. Every tool st
 | `faf_claude` | write `CLAUDE.md` (+ the three above with flags or `all`) from `project.faf` |
 | `faf_sync` | reconcile `project.faf` with package.json — dry-run lists each change, `apply:true` writes |
 | `faf_trust` · `faf_doctor` · `faf_check` | validate, diagnose, quality-check the file |
-| `faf_context` · `faf_read` · `faf_write` | read the context, read or write files |
+| `faf_context` · `faf_read` · `faf_write` | read the context, read or write files (`faf_write` never writes `.faf-dna`, stays in the project folder, and replaces an existing `project.faf`, `CLAUDE.md` or `AGENTS.md` only with `overwrite: true`) |
 | `faf_git` | author `project.faf` from a GitHub URL |
 
 Resources: `faf://context` (the parsed `.faf` + score) and `faf://status` (score, tier, path).
