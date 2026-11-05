@@ -45,7 +45,7 @@ Resources: `claude-faf://context` (the parsed `.faf` + score) and `claude-faf://
 Every tool carries MCP tool annotations, so your client knows when to ask first:
 
 - **Read only:** `faf_score`, `faf_trust`, `faf_get_orchestration_policy`, `rag_cache_stats`, and `rag_query` (the one tool that reaches the network, xAI Collections). With `FAF_TOOLS=all`, also `faf_list` and `faf_read`.
-- **Can delete or overwrite:** `faf_init` with `force`; with `FAF_TOOLS=all`, `faf_clear` and `faf_write`.
+- **Can delete or overwrite:** `faf_init` with `force`; with `FAF_TOOLS=all`, `faf_clear` and `faf_write`. `faf_write` never writes `.faf-dna`, stays inside the project folder (not `.git/`), and replaces an existing `project.faf`, `*.faf`, `CLAUDE.md` or `AGENTS.md` only with `overwrite: true`.
 - **Write without losing anything:** the rest. `faf_sync` keeps your prose, `rag_cache_clear` only empties memory, and `refresh_faf`, `refresh_fafm`, `refresh_blend`, `faf_orchestrate_recommendation` and the FRC tools append small receipt files (`.faf-refresh-receipts.json`, `.fafm-refresh-receipts.json`, `.frc-usage-receipts.json`) to your project folder.
 
 ## Local or hosted
