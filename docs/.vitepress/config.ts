@@ -26,6 +26,7 @@ export default defineConfig({
           { text: 'Test Receipts', link: '/taf' },
           { text: 'Custom rules', link: '/custom-rules' },
           { text: 'Context guard', link: '/hooks' },
+          { text: 'More commands', link: '/more-commands' },
           { text: 'What each command writes', link: '/side-effects' },
         ],
       },
