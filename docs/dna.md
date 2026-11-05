@@ -21,11 +21,15 @@ The line reads birth → peak ← now. Under it, `history` lists every version: 
 | Command | `.faf-dna` |
 |---|---|
 | `init` | writes the birth certificate when there is none |
-| `init --new` | a fresh `project.faf`; `.faf-dna` is kept as it is |
+| `init --new`, `init --force` | a fresh `project.faf`; `.faf-dna` is kept as it is |
 | `auto`, `go`, `edit` | add a version when the score moves. Never create a `.faf-dna`. |
 | `refresh` | adds a version when the score moves; writes the birth certificate when there is none |
 
 A score that doesn't move adds no version.
+
+## Written once
+
+The birth certificate is written once and never replaced. faf writes `.faf-dna` only when there is none: with one there, in any shape, it writes nothing. `init --output sub/x.faf` writes it beside the file, as `sub/.faf-dna`.
 
 ## As data
 
@@ -44,6 +48,30 @@ faf: .faf-dna is gitignored (.gitignore:2: .faf-dna): a fresh clone loses the bi
 ```
 
 To keep it local on purpose, put the reason in a `#` comment on the line above the rule. faf stays quiet.
+
+Committed, the certificate is permanent: the commit that first added `.faf-dna` is named by the hash of its content, so it can't change without rewriting history. Until then, `faf init` and `faf dna` print the command to run:
+
+```
+The birth certificate is not committed yet. Commit it to make it permanent: git add .faf-dna && git commit -m "faf: birth certificate"
+```
+
+faf never commits for you.
+
+## Verify
+
+```bash
+faf dna --verify
+```
+
+Compares the certificate in `.faf-dna` with the one in the commit that first added it: `certificate`, `born`, `birthDNA` and `projectDNA` must be the same. A certificate that was deleted and written again is still checked against the first commit.
+
+| Exit | Means |
+|---|---|
+| `0` | the same |
+| `1` | changed, or `.faf-dna` is gone |
+| `2` | can't check: not a git repository, a shallow clone, or not committed yet |
+
+`--json` gives the result as data. A shallow clone (`actions/checkout` defaults to one commit) can't show the first commit, so faf says so rather than report a match; fetch the full history first (`fetch-depth: 0`).
 
 ## Protected
 
