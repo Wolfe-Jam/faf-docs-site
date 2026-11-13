@@ -31,6 +31,12 @@ export default defineConfig({
         ],
       },
       {
+        text: 'claude-faf-mcp',
+        items: [
+          { text: 'Claude FAF (claude-faf-mcp)', link: '/claude-faf-mcp' },
+        ],
+      },
+      {
         text: 'faf-mcp',
         items: [
           { text: '.FAF Context (faf-mcp)', link: '/faf-mcp' },
