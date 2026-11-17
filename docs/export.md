@@ -17,13 +17,30 @@ faf export --agents     # AGENTS.md
 | `--gemini` | `GEMINI.md` |
 | `--copilot` | `.github/copilot-instructions.md` |
 | `--grok` | wires `grok-faf-mcp` into `.grok/config.toml` |
-| `--llms` | `llms.txt` (llmstxt.org shape) — the authored 6 Ws only |
+| `--llms` | `llms.txt` (llmstxt.org shape) — the authored six W's only |
 | `--conductor` | Conductor config |
 | `--html` | `project.html` — a visual render of `project.faf` |
 | `--card` | MCP Server Card (`./server-card`) |
 | `--all` | every format above |
 
 `CLAUDE.md` isn't here: `faf sync` writes it from `project.faf`, with the same managed block.
+
+## The six W's in each file
+
+The goal and six W's (who, what, why, where, when, how) are the facts only you can confirm. Each file carries them in the way that suits it:
+
+- **`AGENTS.md`** points to them instead of copying them, under its own heading:
+
+  ```
+  ## Project facts
+
+  The six W's (who, what, why, where, when, how) and the project's other facts are in `project.faf`.
+  ```
+
+  The path is the real one, relative to `AGENTS.md`: `.faf` for a legacy file, `../project.faf` when it sits one folder up or `--output` writes inside the project. When `--output` is outside the project, it names the file alone, so no path from your machine ends up in a shared file.
+- **`CLAUDE.md`** (`faf sync`), **`GEMINI.md`**, **`.cursorrules`**, the **Copilot instructions**, **`llms.txt`** and Claude Code's **`MEMORY.md`** block (`faf sync`, Pro) carry them, word for word the same in every file.
+
+One rule decides what shows, the score's: a slot the score counts as empty (empty, `slotignored`, a placeholder such as TBD or N/A) is left out. Numbers, dates and lists show as text. Each fact is one line.
 
 ## Non-destructive, by design
 
@@ -65,6 +82,7 @@ import { readFaf, enrichFromRepo, writeAgentsMd } from 'faf-cli';
 
 const data = readFaf(`${dir}/project.faf`);
 writeAgentsMd(dir, enrichFromRepo(dir, data));   // exactly `faf export --agents`
+// optional third argument: the facts file's path relative to dir (default 'project.faf')
 ```
 
 | Export | Does |
