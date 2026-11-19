@@ -1,3 +1,7 @@
+---
+title: "More commands"
+---
+
 # More commands
 
 The rest of faf-cli: history, benchmarks, test audits, and small tools. Each one reads `project.faf` (found the way every command finds it) unless it says otherwise. What each one writes is in [What each command writes](/side-effects).

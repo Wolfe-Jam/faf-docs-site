@@ -1,3 +1,7 @@
+---
+title: "Claude FAF (claude-faf-mcp)"
+---
+
 # claude-faf-mcp
 
 **Claude FAF** is the name on the MCP registries; `claude-faf-mcp` is the package and the repo. The MCP server for Claude Desktop and Claude Code: persistent project context from `project.faf`, locally over stdio.

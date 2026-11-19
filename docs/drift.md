@@ -1,3 +1,7 @@
+---
+title: "Drift"
+---
+
 # Drift
 
 `faf drift` checks whether the files your AI reads have moved ahead of `project.faf`. It compares the modification time of `project.faf` against `CLAUDE.md`, `AGENTS.md`, `.cursorrules`, and `GEMINI.md`.

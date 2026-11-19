@@ -1,0 +1,76 @@
+{
+  "$schema": "https://context7.com/schema/docs7.json",
+  "name": "FAF manual",
+  "colors": {
+    "primary": "#00D4D4"
+  },
+  "navigation": {
+    "groups": [
+      {
+        "group": "Start",
+        "pages": [
+          "index"
+        ]
+      },
+      {
+        "group": "faf-cli",
+        "pages": [
+          "getting-started",
+          "scoring",
+          "export",
+          "cards",
+          "fafb",
+          "drift",
+          "dna",
+          "taf",
+          "custom-rules",
+          "hooks",
+          "more-commands",
+          "side-effects"
+        ]
+      },
+      {
+        "group": "claude-faf-mcp",
+        "pages": [
+          "claude-faf-mcp"
+        ]
+      },
+      {
+        "group": "faf-mcp",
+        "pages": [
+          "faf-mcp"
+        ]
+      },
+      {
+        "group": "Chrome extension",
+        "pages": [
+          "agent-discovery-check"
+        ]
+      },
+      {
+        "group": "grok-faf-mcp",
+        "pages": [
+          "grok-faf-mcp"
+        ]
+      }
+    ]
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "GitHub",
+        "href": "https://github.com/Wolfe-Jam/faf-cli"
+      },
+      {
+        "label": "faf.one",
+        "href": "https://faf.one"
+      }
+    ]
+  },
+  "feedback": {
+    "thumbsRating": true
+  },
+  "appearance": {
+    "default": "dark"
+  }
+}

@@ -1,3 +1,7 @@
+---
+title: "DNA"
+---
+
 # DNA
 
 `.faf-dna` is your project's birth certificate: the score `project.faf` had the first time `faf init` wrote it, recorded once. A project gets one. faf keeps it, and records what happens after.

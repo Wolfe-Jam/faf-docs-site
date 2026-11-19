@@ -1,3 +1,7 @@
+---
+title: "Test Receipts"
+---
+
 # Test Receipts
 
 A Test Receipt is one line of proof that your tests ran: when, the result, passed/total. Every CI run on your default branch appends one to `.taf`, on its own `taf-receipts` branch, so the record lives in git and never expires with the CI logs. Red runs get one too.

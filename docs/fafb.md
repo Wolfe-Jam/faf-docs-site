@@ -1,3 +1,7 @@
+---
+title: "Compile"
+---
+
 # Compile
 
 `.faf` is the source. `.fafb` is the same context compiled — a binary a machine can index without reading it. The brick.

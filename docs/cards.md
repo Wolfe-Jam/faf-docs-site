@@ -1,3 +1,7 @@
+---
+title: "Cards"
+---
+
 # Cards
 
 Agents and MCP servers are found through cards — small files other machines read. There are several, they overlap, and they ask the same things in different words. Keep three by hand and you get three that disagree.

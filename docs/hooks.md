@@ -1,3 +1,7 @@
+---
+title: "Context guard"
+---
+
 # Context guard
 
 A pre-commit hook that catches a **context regression** — when the `project.faf` you're about to commit scores *lower* than the one already in `HEAD`. It warns before the drop lands in Git; with `--strict`, it blocks the commit.

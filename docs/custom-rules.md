@@ -1,3 +1,7 @@
+---
+title: "Custom rules"
+---
+
 # Custom rules
 
 Custom rules are your own instructions to the AI — what it must always do, or never do, in this repo. Write them once in `project.faf`; faf carries them into every `AGENTS.md` it authors, and never overwrites them.

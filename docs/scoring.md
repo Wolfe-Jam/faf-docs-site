@@ -1,3 +1,7 @@
+---
+title: "Scoring"
+---
+
 # Scoring
 
 `faf score` reads your `project.faf` and gives it a 0–100% AI-readiness score. The score is deterministic: the same file gets the same number, every time, in every tool that runs the engine.

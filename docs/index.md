@@ -1,3 +1,7 @@
+---
+title: "docs.faf.one"
+---
+
 # docs.faf.one
 
 The FAF manual. Facts for devs.

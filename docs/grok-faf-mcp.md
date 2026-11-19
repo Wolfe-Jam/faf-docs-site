@@ -1,3 +1,7 @@
+---
+title: "Grok FAF (grok-faf-mcp)"
+---
+
 # grok-faf-mcp
 
 **Grok FAF** is the name on the MCP registries; `grok-faf-mcp` is the package and the repo. The MCP server for xAI Grok: persistent project context from `project.faf`, on a URL or locally over stdio.

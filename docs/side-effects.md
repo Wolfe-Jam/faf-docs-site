@@ -1,3 +1,7 @@
+---
+title: "What each command writes"
+---
+
 # What each command writes
 
 Every faf command, and what it touches: files in your project, files your AI agents load, git and CI, and anything that leaves your machine. Use it to decide what an agent may run on its own, to write sandbox or allowlist rules, or just to know before you run.

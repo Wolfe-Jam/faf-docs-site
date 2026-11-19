@@ -1,3 +1,7 @@
+---
+title: "Export"
+---
+
 # Export
 
 `faf export` writes the files your AI actually reads — `AGENTS.md`, `.cursorrules`, `GEMINI.md`, and more — straight from `project.faf`. One source, every surface, always in sync.

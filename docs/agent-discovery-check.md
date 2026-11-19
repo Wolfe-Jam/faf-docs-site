@@ -1,3 +1,7 @@
+---
+title: "Agent Discovery Check"
+---
+
 # Agent Discovery Check
 
 A Chrome extension. Click it on any site and it shows whether that site publishes what AI agents look for, and whether each file meets its spec.
