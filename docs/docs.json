@@ -72,5 +72,10 @@
   },
   "appearance": {
     "default": "dark"
+  },
+  "seo": {
+    "metatags": {
+      "canonical": "https://docs.faf.one"
+    }
   }
 }
