@@ -40,7 +40,7 @@ The goal and six W's (who, what, why, where, when, how) are the facts only you c
   The path is the real one, relative to `AGENTS.md`: `.faf` for a legacy file, `../project.faf` when it sits one folder up or `--output` writes inside the project. When `--output` is outside the project, it names the file alone, so no path from your machine ends up in a shared file.
 - **`CLAUDE.md`** (`faf sync`), **`GEMINI.md`**, **`.cursorrules`**, the **Copilot instructions**, **`llms.txt`** and Claude Code's **`MEMORY.md`** block (`faf sync`, Pro) carry them, word for word the same in every file.
 
-One rule decides what shows, the score's: a slot the score counts as empty (empty, `slotignored`, a placeholder such as TBD or N/A) is left out. Numbers, dates and lists show as text. Each fact is one line.
+One rule decides what shows, the score's: a slot the score counts as empty (empty, `slotignored`, a placeholder such as TBD or N/A) is left out. Numbers show as written in project.faf (`2026.10`, not `2026.1`); dates and lists show as text. Each fact is one line.
 
 ## Non-destructive, by design
 
