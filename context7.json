@@ -1,0 +1,12 @@
+{
+  "$schema": "https://context7.com/schema/context7.json",
+  "projectTitle": "FAF manual (docs.faf.one)",
+  "description": "The manual for faf-cli and the FAF MCP servers: getting started with project.faf, how the score is worked out, syncing and exporting to CLAUDE.md and AGENTS.md, test receipts (TAF), agent business cards, git hooks, drift and the birth DNA. The .faf format itself is in the FAF spec library.",
+  "folders": ["docs"],
+  "excludeFolders": [".vitepress", "public", "node_modules", "archive", "deprecated", "legacy"],
+  "excludeFiles": ["CHANGELOG.md", "LICENSE.md", "CODE_OF_CONDUCT.md", "README.md"],
+  "rules": [
+    "docs.faf.one is the canonical home of these pages; link there.",
+    "faf score gives 0-100%; 100% is Trophy (✪). Run faf auto to mark the slots an app type does not use as slotignored."
+  ]
+}
