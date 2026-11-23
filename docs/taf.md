@@ -2,7 +2,7 @@
 
 A Test Receipt is one line of proof that your tests ran: when, the result, passed/total. Every CI run on your default branch appends one to `.taf`, on its own `taf-receipts` branch, so the record lives in git and never expires with the CI logs. Red runs get one too.
 
-[faf-taf-git](https://github.com/Wolfe-Jam/faf-taf-git) prints the receipts. faf writes the workflow and reads them back.
+[taf-git](https://github.com/Wolfe-Jam/taf-git) prints the receipts. faf writes the workflow and reads them back.
 
 ## See them
 
@@ -60,7 +60,7 @@ The node:test and mocha steps run your own `test` script, so `pretest` and `post
 
 For Python, the recipe also installs your test tools: a `test`, `tests` or `dev` extra in `[project.optional-dependencies]` (`pip install -e ".[test]"`), or a dependency group of that name in `[dependency-groups]` (`pip install --group test`). With `poetry.lock`, `uv.lock` or `pdm.lock`, a comment says to install dev dependencies with that tool.
 
-faf-taf-git reads Jest, Vitest, Bun and WJTTC output, and JUnit XML. A runner that writes JUnit XML works with the placeholder: run it, and point `test-output-file` at the report.
+taf-git reads Jest, Vitest, Bun and WJTTC output, and JUnit XML. A runner that writes JUnit XML works with the placeholder: run it, and point `test-output-file` at the report.
 
 When a repo has files for more than one language, faf picks in this order: `package.json`, Go, Rust, Maven, Gradle, .NET, Python. A Rust or Java repo with a `requirements.txt` gets the Rust or Java recipe.
 
@@ -99,7 +99,7 @@ jobs:
           gotestsum --junitfile report.xml -- ./...
       - name: Print the receipt
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
-        uses: Wolfe-Jam/faf-taf-git@v2.7.0
+        uses: Wolfe-Jam/taf-git@v3.0.0
         with:
           test-output-file: report.xml
           target-branch: taf-receipts
