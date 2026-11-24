@@ -25,6 +25,8 @@ faf export --agents     # AGENTS.md
 
 `CLAUDE.md` isn't here: `faf sync` writes it from `project.faf`, with the same managed block. When an `AGENTS.md` sits beside it, faf's block in `CLAUDE.md` ends with an `@AGENTS.md` import: by default Claude Code reads AGENTS.md only when there is no CLAUDE.md, so the import makes it read both.
 
+The import works when Claude Code starts in the folder that holds `CLAUDE.md`, usually the repo root. Started in a subfolder, Claude Code still loads that `CLAUDE.md`, but `@AGENTS.md` now points outside its working directory, so Claude Code treats it as an external import: it asks once per project at the start of an interactive session, and a headless `claude -p` run skips it. To have Claude Code read `AGENTS.md` from any folder, set **Project instructions** in `/config` to `claude-md-and-agents-md` (a user setting); with that on, the import does not load `AGENTS.md` twice.
+
 ## The six W's in each file
 
 The goal and six W's (who, what, why, where, when, how) are the facts only you can confirm. Each file carries them in the way that suits it:
