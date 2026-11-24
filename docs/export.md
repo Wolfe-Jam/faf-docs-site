@@ -23,7 +23,7 @@ faf export --agents     # AGENTS.md
 | `--card` | MCP Server Card (`./server-card`) |
 | `--all` | every format above |
 
-`CLAUDE.md` isn't here: `faf sync` writes it from `project.faf`, with the same managed block.
+`CLAUDE.md` isn't here: `faf sync` writes it from `project.faf`, with the same managed block. When an `AGENTS.md` sits beside it, faf's block in `CLAUDE.md` ends with an `@AGENTS.md` import: by default Claude Code reads AGENTS.md only when there is no CLAUDE.md, so the import makes it read both.
 
 ## The six W's in each file
 
