@@ -1,6 +1,6 @@
 # DNA
 
-`.faf-dna` is your project's birth certificate: the score `project.faf` had at its first setup (`faf init`, or `faf auto` when it creates `project.faf`), recorded once. A project gets one. faf keeps it, and records what happens after.
+`.faf-dna` is your project's birth certificate: the score `project.faf` had at its first setup (`faf init`; `faf auto` runs `faf init` if there is no `project.faf`), recorded once. A project gets one. faf keeps it, and records what happens after.
 
 ```bash
 faf dna
@@ -22,7 +22,7 @@ The line reads birth → peak ← now. Under it, `history` lists every version: 
 |---|---|
 | `init` | writes the birth certificate when there is none |
 | `init --new`, `init --force` | a fresh `project.faf`; `.faf-dna` is kept as it is |
-| `auto` | writes the birth certificate when it creates `project.faf` and there is none; otherwise adds a version when the score moves |
+| `auto` | runs `faf init` if there is no `project.faf` (which writes the birth certificate when there is none); otherwise adds a version when the score moves |
 | `go`, `edit` | add a version when the score moves. Never create a `.faf-dna`. |
 | `refresh` | adds a version when the score moves; writes the birth certificate when there is none |
 

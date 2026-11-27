@@ -27,6 +27,12 @@ faf export --agents     # AGENTS.md
 
 The import works when Claude Code starts in the folder that holds `CLAUDE.md`, usually the repo root. Started in a subfolder, Claude Code still loads that `CLAUDE.md`, but `@AGENTS.md` now points outside its working directory, so Claude Code treats it as an external import: it asks once per project at the start of an interactive session, and a headless `claude -p` run skips it. To have Claude Code read `AGENTS.md` from any folder, set **Project instructions** in `/config` to `claude-md-and-agents-md` (a user setting); with that on, the import does not load `AGENTS.md` twice.
 
+## What AGENTS.md carries
+
+Instructions, read from the repo: setup and build, the tests, **before a release** (what `npm publish` runs first, from `package.json`'s `prepublishOnly` / `prepack`, or that nothing does), **CI** (the repo's own commands each GitHub Actions check runs on a pull request or push, main check first, other workflows named), where things live, conventions, guardrails, done, when stuck, commits, and a pointer to the facts. Nothing is guessed: a package with no release gate, or a repo with no workflows, gets a line saying so.
+
+When `faf export --agents` writes AGENTS.md and faf's block in `CLAUDE.md` doesn't import it yet, it says so in one line: `run 'faf sync' so CLAUDE.md imports AGENTS.md`. `faf export` writes only the files you asked for.
+
 ## The six W's in each file
 
 The goal and six W's (who, what, why, where, when, how) are the facts only you can confirm. Each file carries them in the way that suits it:

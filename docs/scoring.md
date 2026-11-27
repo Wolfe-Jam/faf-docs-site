@@ -22,7 +22,7 @@ Every `.faf` is scored against the same 33 slots:
 
 ## Your app-type decides what counts
 
-`project.type` is your app-type. `faf init`, `faf auto` and `faf git` detect it and write `slotignored` into every slot it doesn't use — a CLI counts 12 slots, a full-stack app 21. Everything else stays active: filled, or empty.
+`project.type` is your app-type. `faf init`, `faf auto` and `faf git` detect it and write `slotignored` into every slot it doesn't use — a CLI counts 12 slots, an Agent Plugins package (`agent-plugin`) 11, a full-stack app 21. Everything else stays active: filled, or empty.
 
 The slots you don't use stay visible. `faf score` lists all 33:
 
